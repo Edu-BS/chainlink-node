@@ -14,5 +14,8 @@
 5. Login with admin user: `argocd login cd.argoproj.io --core --name admin --password [your-password]`
 
 ## PostgreSQL
+### Deploy it with kubernetes
 1. Apply the manifests: `kubectl apply -f postgresql/manifests/ -n default` 
 2. Test if it's running: `kubectl exec -it [pod-name] --  psql -h localhost -U admin --password -p 5432 postgresdb`
+### Deploy it in ArgoCD
+1. Create the app: `kubectl apply -f postgresql/app.yml`
