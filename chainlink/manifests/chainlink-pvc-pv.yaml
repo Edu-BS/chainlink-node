@@ -12,7 +12,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/mnt/chainlink"
+    path: "/mnt/host-path/chainlink"
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
