@@ -1,0 +1,29 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: chainlink-pv-volume  # Sets PV's name
+  labels:
+    type: local  # Sets PV's type to local
+    app: chainlink
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 5Gi # Sets PV Volume
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/chainlink"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: chainlink-pv-claim  # Sets name of PVC
+  labels:
+    app: chainlink
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany  # Sets read and write access
+  resources:
+    requests:
+      storage: 5Gi  # Sets volume size

@@ -1,0 +1,32 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chainlink  # Sets Deployment name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chainlink
+  template:
+    metadata:
+      labels:
+        app: chainlink
+    spec:
+      containers:
+        - name: chainlink
+          image: smartcontract/chainlink:1.11.0 # Sets Image
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 6688  # Exposes container port
+          volumeMounts:
+            - mountPath: ~/chainlink
+              name: chainlink-vol
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+      volumes:
+        - name: chainlink-vol
+          persistentVolumeClaim:
+            claimName: chainlink-pv-claim
