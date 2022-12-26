@@ -1,4 +1,6 @@
-apiVersion: k3d.io/v1alpha2
+apiVersion: k3d.io/v1alpha4
 kind: Simple
+metadata:
+  name: "chainlink-node-cluster"
 servers: 1
 agents: 2
