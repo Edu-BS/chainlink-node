@@ -14,11 +14,33 @@
 5. Login with admin user: `argocd login cd.argoproj.io --core --name admin --password [your-password]`
 
 ## PostgreSQL
+
 ### Deploy it with kubernetes
+
 1. Create the app: `kubectl apply -f postgresql/app.yaml`
 
 ## Chainlink node
+
 1. Create the app: `kubectl apply -f chainlink/app.yaml`
 
-## SealedSecret controller
+## SealedSecrets
+
 1. Create the app: `kubectl apply -f sealed-controller/app.yaml`
+2. Fill in the files `chainlink-secrets-api.yaml` and `chainlink-secrets-password.yaml`
+3. Convert them to sealed secrets:
+
+   ```bash
+   kubeseal --format=yaml -f chainlink/manifests/chainlink-secrets-api.yaml > chainlink/manifests/chainlink-sealed-secret-api.yaml;
+   kubeseal --format=yaml -f chainlink/manifests/chainlink-secrets-password.yaml > chainlink/manifests/chainlink-sealed-secret-password.yaml
+   ```
+
+4. Create them:
+
+   ```bash
+   kubectl create -f chainlink/manifests/chainlink-sealed-secret-password.yaml; 
+   kubectl create -f chainlink/manifests/chainlink-sealed-secret-api.yaml
+   ```
+
+## Deploy all the apps in ArgoCD
+
+`kubectl apply --filename="./chainlink/app.yaml","./postgresql/app.yaml","./sealed-controller/app.yml"`
