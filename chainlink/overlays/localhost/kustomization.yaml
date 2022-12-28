@@ -1,0 +1,7 @@
+namePrefix: localhost-
+commonLabels:
+  variant: localhost
+bases:
+  - ../../manifests
+patchesStrategicMerge:
+  - chainlink-config.yaml
