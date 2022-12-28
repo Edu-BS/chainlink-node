@@ -45,7 +45,7 @@
 
 Runs a hardhat network to allow testing in local
 
-1. Deploy the app: `kubectl apply -f hardhat-network/app-yaml`
+1. Deploy the app: `kubectl apply -f hardhat-network/app.yaml`
 
 ## Deploy all the apps in ArgoCD
 
