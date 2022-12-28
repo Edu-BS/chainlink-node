@@ -41,6 +41,12 @@
    kubectl create -f chainlink/manifests/chainlink-sealed-secret-api.yaml
    ```
 
+## Hardhat network
+
+Runs a hardhat network to allow testing in local
+
+1. Deploy the app: `kubectl apply -f hardhat-network/app-yaml`
+
 ## Deploy all the apps in ArgoCD
 
 `kubectl apply --filename="./chainlink/app.yaml","./postgresql/app.yaml","./sealed-controller/app.yml"`
