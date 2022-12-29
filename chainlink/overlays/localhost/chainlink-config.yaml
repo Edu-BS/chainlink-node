@@ -7,5 +7,5 @@ metadata:
 data:
   ETH_URL: "ws://hardhat-network:8545"
   ETH_CHAIN_ID: "31337"
-  DATABASE_URL: "postgresql://admin:psltest@postgres:5432/chainlinkHardhatNetworkDB"
-  CHAINLINK_DB_NAME: chainlinkHardhatNetworkDB
+  DATABASE_URL: "postgresql://admin:psltest@postgres:5432/chainlinkhardhatnetworkdb"
+  CHAINLINK_DB_NAME: chainlinkhardhatnetworkdb
