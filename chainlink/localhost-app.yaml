@@ -12,7 +12,6 @@ spec:
     namespace: chainlink-node
   source:
     repoURL: https://github.com/Edu-BS/chainlink-node
-    targetRevision: feature/split-network-nodes
     path: ./chainlink/overlays/localhost
   syncPolicy:
     automated:
