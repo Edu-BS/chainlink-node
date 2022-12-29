@@ -5,3 +5,4 @@ bases:
   - ../../manifests
 patchesStrategicMerge:
   - chainlink-config.yaml
+  - chainlink-deployment.yaml
