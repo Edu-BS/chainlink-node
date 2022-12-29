@@ -11,7 +11,7 @@
    1. `kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'`
    2. `kubectl port-forward svc/argocd-server -n argocd 8080:443`
 4. Expose the admin password: `kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo`
-5. Login with admin user: `argocd login cd.argoproj.io --core --name admin --password [your-password]`
+5. Login with admin user: `argocd login <cd.argoproj.io | localhost:8080> --core --name admin --password <your-password>`
 
 ## PostgreSQL
 
@@ -21,7 +21,9 @@
 
 ## Chainlink node
 
-1. Create the app: `kubectl apply -f chainlink/app.yaml`
+### Localhost network
+
+1. Create the app: `argocd app create -f chainlink/localhost-app.yaml`
 
 ## SealedSecrets
 
