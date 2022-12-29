@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,28 +14,11 @@ spec:
     spec:
       containers:
         - name: chainlink
-          image: smartcontract/chainlink:1.11.0 # Sets Image
+          image: smartcontract/chainlink:1.11.0
           args: ["local", "n", "-p", "/home/chainlink/.password", "-a", "/home/chainlink/.api"]
           ports:
-            - containerPort: 6688  # Exposes container port
+            - containerPort: 6688
           envFrom:
           - configMapRef:
               name: chainlink-config
-          volumeMounts:
-            - name: api-volume
-              mountPath: /home/chainlink/.api
-              subPath: .api
-            - name: password-volume
-              mountPath: /home/chainlink/.password
-              subPath: .password
           resources:
-            limits:
-              memory: "256Mi"
-              cpu: "500m"
-      volumes:
-        - name: api-volume
-          secret:
-            secretName: chainlink-api-secret
-        - name: password-volume
-          secret:
-            secretName: chainlink-password-secret

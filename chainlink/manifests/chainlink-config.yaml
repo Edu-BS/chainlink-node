@@ -5,13 +5,12 @@ metadata:
   labels:
     app: chainlink
 data:
-  ROOT: "/home/chainlink"
-  LOG_LEVEL: "debug"
-  ETH_CHAIN_ID: "5"
+  ROOT: "./chainlink"
+  LOG_LEVEL: debug
   CHAINLINK_TLS_PORT: "0"
   SECURE_COOKIES: "false"
   ALLOW_ORIGINS: "*"
-  ETH_URL: "wss://eth-goerli.g.alchemy.com/v2/QJk8yLA9hnbHi2Wv_JaSBO7sg7fPvd3O"
-  ETH_HTTP_URL: "https://eth-goerli.g.alchemy.com/v2/QJk8yLA9hnbHi2Wv_JaSBO7sg7fPvd3O"
-  DATABASE_URL: "postgresql://admin:psltest@postgres:5432/postgresdb"
-  SKIP_DATABASE_PASSWORD_COMPLEXITY_CHECK: "true"
+  ETH_URL: ""
+  ETH_CHAIN_ID: ""
+  DATABASE_URL: ""
+  CHAINLINK_DB_NAME: ""
