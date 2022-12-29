@@ -6,8 +6,8 @@ data:
   poststart.sh: |
     #!/bin/bash
     
-    psql -U postgres -c "DROP DATABASE IF EXISTS postgresdb"
-    psql -U postgres -c "DROP DATABASE IF EXISTS chainlinkHardhatNetworkDB"
+    psql -U admin postgres -c "DROP DATABASE IF EXISTS postgresdb"
+    psql -U admin postgres -c "DROP DATABASE IF EXISTS chainlinkhardhatnetworkdb"
 
-    psql -U postgres -c "CREATE DATABASE postgresdb"
-    psql -U postgres -c "CREATE DATABASE chainlinkHardhatNetworkDB"
+    psql -U admin postgres -c "CREATE DATABASE postgresdb"
+    psql -U admin postgres -c "CREATE DATABASE chainlinkhardhatnetworkdb"

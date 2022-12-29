@@ -28,6 +28,19 @@ spec:
             - mountPath: /opt/poststart.sh
               subPath: poststart.sh
               name: hookvolume
+          livenessProbe:
+            exec:
+              command: ["psql", "-U", "admin", "-d", "postgres", "-c", "SELECT 1"]
+            periodSeconds: 60
+            initialDelaySeconds: 60
+          startupProbe:
+            exec:
+              command: ["psql", "-U", "admin", "-d", "postgres", "-c", "SELECT 1"]
+            periodSeconds: 15
+            failureThreshold: 5
+            initialDelaySeconds: 15
+
+          resources:
       volumes:
         - name: postgredb
           persistentVolumeClaim:
