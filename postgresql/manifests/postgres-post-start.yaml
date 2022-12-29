@@ -5,6 +5,11 @@ metadata:
 data:
   poststart.sh: |
     #!/bin/bash
+    export POSTGRES_DB: postgresdb
+    export POSTGRES_USER: admin
+    export POSTGRES_PASSWORD: psltest
+    export PGPASSWORD: psltest
+
     
     psql -U admin postgres -c "DROP DATABASE IF EXISTS postgresdb"
     psql -U admin postgres -c "DROP DATABASE IF EXISTS chainlinkhardhatnetworkdb"

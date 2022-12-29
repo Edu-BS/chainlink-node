@@ -16,6 +16,10 @@ spec:
       containers:
         - name: postgres
           image: postgres:13-alpine # Sets Image
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "/opt/poststart.sh"]
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432  # Exposes container port
@@ -30,12 +34,12 @@ spec:
               name: hookvolume
           livenessProbe:
             exec:
-              command: ["psql", "-U", "admin", "-d", "postgres", "-c", "SELECT 1"]
+              command: ["psql", "-U", "admin", "-d", "postgresdb", "-c", "SELECT 1"]
             periodSeconds: 60
             initialDelaySeconds: 60
           startupProbe:
             exec:
-              command: ["psql", "-U", "admin", "-d", "postgres", "-c", "SELECT 1"]
+              command: ["psql", "-U", "admin", "-d", "postgresdb", "-c", "SELECT 1"]
             periodSeconds: 15
             failureThreshold: 5
             initialDelaySeconds: 15
@@ -49,4 +53,4 @@ spec:
           configMap:
             name: poststarthook
             defaultMode: 0755
-
+status: {}
