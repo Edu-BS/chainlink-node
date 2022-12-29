@@ -25,8 +25,15 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgredb
+            - mountPath: /opt/poststart.sh
+              subPath: poststart.sh
+              name: hookvolume
       volumes:
         - name: postgredb
           persistentVolumeClaim:
             claimName: postgres-pv-claim
+        - name: hookvolume
+          configMap:
+            name: poststarthook
+            defaultMode: 0755
 
