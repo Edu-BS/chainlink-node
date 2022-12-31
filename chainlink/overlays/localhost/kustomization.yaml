@@ -6,3 +6,5 @@ bases:
 patchesStrategicMerge:
   - chainlink-config.yaml
   - chainlink-deployment.yaml
+resources:
+  - chainlink-secrets.yaml
