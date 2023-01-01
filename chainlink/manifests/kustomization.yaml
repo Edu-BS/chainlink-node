@@ -1,5 +1,5 @@
 commonLabels:
-  app: chainlink-node
+  app: chainlink
 
 resources:
 - chainlink-config.yaml
