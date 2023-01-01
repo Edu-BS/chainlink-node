@@ -17,6 +17,19 @@ spec:
           volumeMounts:
             - mountPath: /etc/chainlink-secrets-volume/
               name: chainlink-secrets-volume
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 6688
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /
+              port: 6688
+            initialDelaySeconds: 60
+            failureThreshold: 5
+            periodSeconds: 10 
       volumes:
         - name: chainlink-secrets-volume
           secret:
