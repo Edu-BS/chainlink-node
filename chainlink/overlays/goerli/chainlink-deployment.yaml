@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chainlink
+spec:
+  selector:
+    matchLabels:
+      app: chainlink
+  template:
+    metadata:
+      labels:
+        app: chainlink
+    spec:
+      containers:
+        - name: chainlink
+          args: ["local", "n", "-p", "/etc/chainlink-secrets-volume/node-password", "-a", "/etc/chainlink-secrets-volume/apicredentials"]
+          volumeMounts:
+            - mountPath: /etc/chainlink-secrets-volume/
+              name: chainlink-secrets-volume
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 6688
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /
+              port: 6688
+            initialDelaySeconds: 60
+            failureThreshold: 5
+            periodSeconds: 10 
+      volumes:
+        - name: chainlink-secrets-volume
+          secret:
+            secretName: chainlink-secrets

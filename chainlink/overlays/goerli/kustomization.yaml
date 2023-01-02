@@ -1,0 +1,10 @@
+namePrefix: goerli-
+commonLabels:
+  variant: goerli
+bases:
+  - ../../manifests
+patchesStrategicMerge:
+  - chainlink-config.yaml
+  - chainlink-deployment.yaml
+resources:
+  - chainlink-secrets.yaml
