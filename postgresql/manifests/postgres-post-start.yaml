@@ -13,6 +13,8 @@ data:
     
     psql -U admin postgres -c "DROP DATABASE IF EXISTS postgresdb"
     psql -U admin postgres -c "DROP DATABASE IF EXISTS chainlinkhardhatnetworkdb"
+    psql -U admin postgres -c "DROP DATABASE IF EXISTS chainlinkgoerlidb"
 
     psql -U admin postgres -c "CREATE DATABASE postgresdb"
     psql -U admin postgres -c "CREATE DATABASE chainlinkhardhatnetworkdb"
+    psql -U admin postgres -c "CREATE DATABASE chainlinkgoerlidb"
